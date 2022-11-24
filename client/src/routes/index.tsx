@@ -1,4 +1,5 @@
 import Counter from "~/components/Counter";
+import MazeCreator from "~/components/MazeCreator";
 import "./index.css";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <h1>Hello world!</h1>
       <Counter />
+      <MazeCreator />
       <p>
         Visit{" "}
         <a href="https://solidjs.com" target="_blank">
