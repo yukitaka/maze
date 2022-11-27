@@ -1,10 +1,13 @@
-import { createServerAction$ } from "solid-start/server";
+import { createRouteAction } from "solid-start";
+import { redirect } from "solid-start/server";
 import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
-  const [creator, { Form }] = createServerAction$(async (form: FormData) => {
+  const [creator, { Form }] = createRouteAction(async (form: FormData) => {
     const width = form.get("width");
     const height = form.get("height");
+
+    return form;
   });
   return (
     <Form>
@@ -14,6 +17,7 @@ export default function MazeCreator(props) {
       <input type="number" name="height" min="5" /><br />
       <button
         class="creator"
+        onClick={() => props.setMaze()}
         disabled={creator.pending}
       >
         Create
