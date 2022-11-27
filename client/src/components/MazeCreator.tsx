@@ -1,5 +1,4 @@
 import { createRouteAction } from "solid-start";
-import { redirect } from "solid-start/server";
 import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
@@ -17,7 +16,7 @@ export default function MazeCreator(props) {
       <input type="number" name="height" min="5" /><br />
       <button
         class="creator"
-        onClick={() => props.setMaze()}
+        onClick={() => props.setMaze([[1, 1, 1], [1, 0, 1], [1, 1, 1]])}
         disabled={creator.pending}
       >
         Create
