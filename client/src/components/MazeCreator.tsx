@@ -1,10 +1,20 @@
-import { createServerAction$ } from "solid-start/server";
+import { createRouteAction } from "solid-start";
 import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
-  const [creator, { Form }] = createServerAction$(async (form: FormData) => {
+  const [creator, { Form }] = createRouteAction(async (form: FormData) => {
     const width = form.get("width");
     const height = form.get("height");
+    let maze = [];
+    for (let i = 0; i < height; i++) {
+      let row = [];
+      for (let j = 0; j < width; j++) {
+        row[j] = (Math.random() < 0.5 ? 1 : 0);
+      }
+      maze[i] = row;
+    }
+
+    props.setMaze(maze);
   });
   return (
     <Form>
