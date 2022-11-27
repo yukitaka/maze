@@ -5,8 +5,16 @@ export default function MazeCreator(props) {
   const [creator, { Form }] = createRouteAction(async (form: FormData) => {
     const width = form.get("width");
     const height = form.get("height");
+    let maze = [];
+    for (let i = 0; i < height; i++) {
+      let row = [];
+      for (let j = 0; j < width; j++) {
+        row[j] = (Math.random() < 0.5 ? 1 : 0);
+      }
+      maze[i] = row;
+    }
 
-    return form;
+    props.setMaze(maze);
   });
   return (
     <Form>
@@ -16,7 +24,6 @@ export default function MazeCreator(props) {
       <input type="number" name="height" min="5" /><br />
       <button
         class="creator"
-        onClick={() => props.setMaze([[1, 1, 1], [1, 0, 1], [1, 1, 1]])}
         disabled={creator.pending}
       >
         Create
