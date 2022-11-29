@@ -30,7 +30,7 @@ function createEdges(vertexes: [][[number, number]]): [Edge] {
     for (const vertex of row) {
       const around = listUpAround(vertexes, vertex);
       for (const opposite of around) {
-        edges[vertex] = { from: vertex, to: opposite, weight: 5 };
+        edges[vertex] = { from: vertex, to: opposite, weight: Math.floor(Math.random() * 10) };
       }
     }
   }
