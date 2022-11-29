@@ -7,9 +7,38 @@ interface Edge {
 export default function spanningTree(width: number, height: number) {
   const vertexes: [][[number, number]] = createVertexes(width, height);
   const edges = createEdges(vertexes);
-  console.log(edges);
 
-  return vertexes;
+  let visited = [vertexes[0][0]];
+  let tree = [];
+  while (visited.length < width * height) {
+    let min = 10;
+    let addEdges = [];
+    for (const target of visited) {
+      for (let edge of edges[target]) {
+        if (!visited.includes(edge.to) && edge.weight <= min) {
+          min = edge.weight;
+          if (!addEdges[min]) {
+            addEdges[min] = [edge];
+          } else {
+            addEdges[min].push(edge);
+          }
+        }
+      }
+    }
+    for (let i = 0; i < 10; i++) {
+      if (addEdges[i]) {
+        for (const edge of addEdges[i]) {
+          if (!visited.includes(edge.to)) {
+            tree.push(edge);
+            visited.push(edge.to);
+          }
+        }
+        break;
+      }
+    }
+  }
+
+  return tree;
 }
 
 function createVertexes(width: number, height: number): [][[number, number]] {
