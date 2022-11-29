@@ -29,8 +29,18 @@ function createEdges(vertexes: [][[number, number]]): [Edge] {
   for (const row of vertexes) {
     for (const vertex of row) {
       const around = listUpAround(vertexes, vertex);
+      edges[vertex] = [];
       for (const opposite of around) {
-        edges[vertex] = { from: vertex, to: opposite, weight: Math.floor(Math.random() * 10) };
+        let weight;
+        if (edges[opposite]) {
+          for (const edge of edges[opposite]) {
+            if (edge["to"] == vertex) {
+              weight = edge["weight"];
+              break;
+            }
+          }
+        }
+        edges[vertex].push({ from: vertex, to: opposite, weight: weight || Math.floor(Math.random() * 10) });
       }
     }
   }
