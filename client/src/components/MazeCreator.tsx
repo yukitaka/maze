@@ -1,21 +1,14 @@
 import { createRouteAction } from "solid-start";
 import spanningTree from "~/lib/spanningtree";
+import pathway from "~/lib/pathway";
 import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
   const [creator, { Form }] = createRouteAction(async (form: FormData) => {
-    const width = form.get("width").toString();
-    const height = form.get("height").toString();
-    let maze = [];
-    for (let i = 0; i < height; i++) {
-      let row = [];
-      for (let j = 0; j < width; j++) {
-        row[j] = (Math.random() < 0.5 ? 1 : 0);
-      }
-      maze[i] = row;
-    }
-    const st = spanningTree(parseInt(width), parseInt(height));
-    console.log(st);
+    const width = parseInt(form.get("width").toString());
+    const height = parseInt(form.get("height").toString());
+    const st = spanningTree(width, height);
+    const maze = pathway(width, height, st);
 
     props.setMaze(maze);
   });
