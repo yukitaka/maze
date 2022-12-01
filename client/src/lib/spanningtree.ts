@@ -4,7 +4,7 @@ interface Edge {
   weight: number;
 }
 
-export default function spanningTree(width: number, height: number) {
+export default function spanningTree(width: number, height: number) : Edge[] {
   const vertexes: [][[number, number]] = createVertexes(width, height);
   const edges = createEdges(vertexes);
 

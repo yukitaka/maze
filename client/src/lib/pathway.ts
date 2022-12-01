@@ -1,5 +1,5 @@
 import { Edge } from "~/lib/spanningtree";
-export default function pathway(width: number, height: number, edges: Edge[]) {
+export default function pathway(width: number, height: number, edges: Edge[]) : [number][number] {
   let maze = [];
   for (let i = 0; i < height * 2 - 1; i++) {
     let row = [];
