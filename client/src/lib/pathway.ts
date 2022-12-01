@@ -1,30 +1,30 @@
 import { Edge } from "~/lib/spanningtree";
 export default function pathway(width: number, height: number, edges: Edge[]) {
   let maze = [];
-  for (let i = 0; i < height * 2; i++) {
+  for (let i = 0; i < height * 2 - 1; i++) {
     let row = [];
-    for (let j = 0; j < width * 2; j++) {
+    for (let j = 0; j < width * 2 - 1; j++) {
       row.push(1);
     }
     maze.push(row);
   }
 
   for (const edge of edges) {
+    let x1, x2, x3, y1, y2, y3;
     if (edge["from"][0] == edge["to"][0]) {
-      let col = maze[edge["from"][0] * 2];
-      const from = edge["from"][1];
-      const to = edge["to"][1];
-      col[from * 2] = 0;
-      col[to * 2] = 0;
-      col[from + to] = 0;
+      x1 = x2 = x3 = edge["from"][0] * 2;
+      y1 = edge["from"][1] * 2;
+      y2 = edge["from"][1] + edge["to"][1];
+      y3 = edge["to"][1] * 2;
     } else {
-      let row = edge["from"][1] * 2;
-      const from = edge["from"][0];
-      const to = edge["to"][0];
-      maze[from * 2][row] = 0;
-      maze[to * 2][row] = 0;
-      maze[from + to][row] = 0;
+      x1 = edge["from"][0] * 2;
+      x2 = edge["from"][0] + edge["to"][0];
+      x3 = edge["to"][0] * 2;
+      y1 = y2 = y3 = edge["from"][1] * 2;
     }
+    maze[x1][y1] = 0;
+    maze[x2][y2] = 0;
+    maze[x3][y3] = 0;
   }
 
   return maze;
