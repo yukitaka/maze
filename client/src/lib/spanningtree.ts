@@ -77,7 +77,7 @@ function createEdges(vertexes: [][[number, number]]): [Edge] {
   return edges;
 }
 
-function listUpAround(vertexes: [][[number, number]], vertex: [number, number]): [[number, number]] {
+export function listUpAround(vertexes: [][[number, number]], vertex: [number, number]): [[number, number]] {
   let around = [];
   const x = vertex[0];
   const y = vertex[1];

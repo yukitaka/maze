@@ -1,5 +1,5 @@
 import "@solidjs/testing-library";
-import { createVertexes } from "~/lib/spanningtree";
+import { createVertexes, listUpAround } from "~/lib/spanningtree";
 
 describe("Spanning Tree", () => {
   it("create vertexes", () => {
@@ -10,4 +10,13 @@ describe("Spanning Tree", () => {
       }
     }
   });
+
+  it("listup around of vertex", () => {
+    const vertexes = createVertexes(3, 3);
+    const around = listUpAround(vertexes, vertexes[1][1]);
+
+    console.log(around);
+    expect(around.length).toBe(4);
+    expect(around).toEqual([[0, 1], [1, 0], [1, 2], [2, 1]]);
+  })
 });
