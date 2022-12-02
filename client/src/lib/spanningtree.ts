@@ -41,7 +41,7 @@ export default function spanningTree(width: number, height: number) : Edge[] {
   return tree;
 }
 
-function createVertexes(width: number, height: number): [][[number, number]] {
+export function createVertexes(width: number, height: number): [][[number, number]] {
   let vertexes = [];
   for (let i = 0; i < width; i++) {
     vertexes[i] = [];
@@ -53,7 +53,7 @@ function createVertexes(width: number, height: number): [][[number, number]] {
   return vertexes;
 }
 
-function createEdges(vertexes: [][[number, number]]): [Edge] {
+export function createEdges(vertexes: [][[number, number]]): [Edge] {
   let edges = [];
   for (const row of vertexes) {
     for (const vertex of row) {
@@ -77,7 +77,7 @@ function createEdges(vertexes: [][[number, number]]): [Edge] {
   return edges;
 }
 
-function listUpAround(vertexes: [][[number, number]], vertex: [number, number]): [[number, number]] {
+export function listUpAround(vertexes: [][[number, number]], vertex: [number, number]): [[number, number]] {
   let around = [];
   const x = vertex[0];
   const y = vertex[1];
@@ -87,7 +87,7 @@ function listUpAround(vertexes: [][[number, number]], vertex: [number, number]):
   const down = y + 1;
   for (const horizon of [left, x, right]) {
     for (const vertical of [top, y, down]) {
-      if (horizon == x && vertical == y) {
+      if ((horizon == x && vertical == y) || (horizon != x && vertical != y)) {
         continue;
       }
       if (vertexes[horizon] !== undefined) {
