@@ -41,7 +41,7 @@ export default function spanningTree(width: number, height: number) : Edge[] {
   return tree;
 }
 
-function createVertexes(width: number, height: number): [][[number, number]] {
+export function createVertexes(width: number, height: number): [][[number, number]] {
   let vertexes = [];
   for (let i = 0; i < width; i++) {
     vertexes[i] = [];
