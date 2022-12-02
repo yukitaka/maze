@@ -87,7 +87,7 @@ function listUpAround(vertexes: [][[number, number]], vertex: [number, number]):
   const down = y + 1;
   for (const horizon of [left, x, right]) {
     for (const vertical of [top, y, down]) {
-      if (horizon == x && vertical == y) {
+      if ((horizon == x && vertical == y) || (horizon != x && vertical != y)) {
         continue;
       }
       if (vertexes[horizon] !== undefined) {
