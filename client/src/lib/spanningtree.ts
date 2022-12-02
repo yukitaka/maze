@@ -53,7 +53,7 @@ export function createVertexes(width: number, height: number): [][[number, numbe
   return vertexes;
 }
 
-function createEdges(vertexes: [][[number, number]]): [Edge] {
+export function createEdges(vertexes: [][[number, number]]): [Edge] {
   let edges = [];
   for (const row of vertexes) {
     for (const vertex of row) {
