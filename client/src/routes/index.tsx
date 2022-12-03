@@ -1,4 +1,5 @@
 import Counter from "~/components/Counter";
+import Header from "~/components/Header";
 import Maze from "~/components/Maze";
 import MazeCreator from "~/components/MazeCreator";
 import "./index.css";
@@ -9,7 +10,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Hello world!</h1>
+      <Header />
       <Counter />
       <MazeCreator setMaze={setMaze} />
       <Maze maze={maze()} />
