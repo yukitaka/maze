@@ -4,13 +4,13 @@ interface Edge {
   weight: number;
 }
 
-export default function spanningTree(width: number, height: number) : Edge[] {
-  const vertexes: [][[number, number]] = createVertexes(width, height);
+export default function spanningTree(size: number) : Edge[] {
+  const vertexes: [][[number, number]] = createVertexes(size);
   const edges = createEdges(vertexes);
 
   let visited = [vertexes[0][0]];
   let tree = [];
-  while (visited.length < width * height) {
+  while (visited.length < size * size) {
     let min = 10;
     let addEdges = [];
     for (const target of visited) {
@@ -41,12 +41,12 @@ export default function spanningTree(width: number, height: number) : Edge[] {
   return tree;
 }
 
-export function createVertexes(width: number, height: number): [][[number, number]] {
+export function createVertexes(size: number): [][[number, number]] {
   let vertexes = [];
-  for (let i = 0; i < width; i++) {
-    vertexes[i] = [];
-    for (let j = 0; j < height; j++) {
-      vertexes[i].push([i, j]);
+  for (let w = 0; w < size; w++) {
+    vertexes[w] = [];
+    for (let h = 0; h < size; h++) {
+      vertexes[w].push([w, h]);
     }
   }
 
