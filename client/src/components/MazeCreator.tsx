@@ -14,13 +14,13 @@ export default function MazeCreator(props) {
   });
   return (
     <Form>
-      <select name="size">
+      <select class="size-selector" name="size">
         <option value="5">Micro</option>
         <option value="9">Mini</option>
         <option value="13">Standard</option>
         <option value="17">Large</option>
         <option value="21">Extra Large</option>
-      </select><br />
+      </select>
       <button
         class="creator"
         disabled={creator.pending}
