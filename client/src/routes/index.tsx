@@ -5,7 +5,7 @@ import "./index.css";
 import { createSignal } from "solid-js";
 
 export default function Home() {
-  const [maze, setMaze] = createSignal([[1, 1, 1], [0, 1, 0], [1, 1, 1]]);
+  const [maze, setMaze] = createSignal([]);
 
   return (
     <main>
