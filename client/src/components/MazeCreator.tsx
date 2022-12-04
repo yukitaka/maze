@@ -5,21 +5,22 @@ import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
   const [creator, { Form }] = createRouteAction(async (form: FormData) => {
-    const width = parseInt(form.get("width").toString());
-    const height = parseInt(form.get("height").toString());
-    const cw = width - Math.floor(width / 2);
-    const ch = height - Math.floor(height / 2);
-    const st = spanningTree(cw, ch);
-    const maze = pathway(cw, ch, st);
+    const size = parseInt(form.get("size").toString());
+    const wh = size - Math.floor(size / 2);
+    const st = spanningTree(wh);
+    const maze = pathway(wh, st);
 
     props.setMaze(maze);
   });
   return (
     <Form>
-      <label for="width-input">Width: </label>
-      <input type="number" name="width" min="5" /><br />
-      <label for="width-input">Height: </label>
-      <input type="number" name="height" min="5" /><br />
+      <select name="size">
+        <option value="5">Micro</option>
+        <option value="9">Mini</option>
+        <option value="13">Standard</option>
+        <option value="17">Large</option>
+        <option value="21">Extra Large</option>
+      </select><br />
       <button
         class="creator"
         disabled={creator.pending}
