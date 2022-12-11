@@ -19,7 +19,7 @@ describe("Spanning Tree", () => {
     const vertexes = createVertexes(3, 3);
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        expect(vertexes[i][j]).toEqual([i, j]);
+        expect(vertexes[j][i]).toEqual([i, j]);
       }
     }
   });

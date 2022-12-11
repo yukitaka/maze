@@ -43,10 +43,10 @@ export default function spanningTree(size: number) : Edge[] {
 
 export function createVertexes(size: number): [][[number, number]] {
   let vertexes = [];
-  for (let w = 0; w < size; w++) {
-    vertexes[w] = [];
-    for (let h = 0; h < size; h++) {
-      vertexes[w].push([w, h]);
+  for (let y = 0; y < size; y++) {
+    vertexes[y] = [];
+    for (let x = 0; x < size; x++) {
+      vertexes[y].push([x, y]);
     }
   }
 
@@ -90,9 +90,9 @@ export function listUpAround(vertexes: [][[number, number]], vertex: [number, nu
       if ((horizon == x && vertical == y) || (horizon != x && vertical != y)) {
         continue;
       }
-      if (vertexes[horizon] !== undefined) {
-        if (vertexes[horizon][vertical] !== undefined) {
-          around.push(vertexes[horizon][vertical]);
+      if (vertexes[vertical] !== undefined) {
+        if (vertexes[vertical][horizon] !== undefined) {
+          around.push(vertexes[vertical][horizon]);
         }
       }
     }
