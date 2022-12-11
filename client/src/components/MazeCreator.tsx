@@ -1,6 +1,7 @@
 import { createRouteAction } from "solid-start";
 import spanningTree from "~/lib/spanningtree";
 import pathway from "~/lib/pathway";
+import pave from "~/lib/corridor";
 import "./MazeCreator.css";
 
 export default function MazeCreator(props) {
@@ -9,6 +10,8 @@ export default function MazeCreator(props) {
     const wh = size - Math.floor(size / 2);
     const st = spanningTree(wh);
     const maze = pathway(wh, st);
+    const corridor = pave(wh, st);
+    console.log(corridor);
 
     props.setMaze(maze);
   });
